@@ -52,7 +52,7 @@ async def get_country_outline(country: str = Query(..., description="Country nam
         markdown_lines = []
         
         # Add "Contents" as the first heading (expected by tests)
-        markdown_lines.append('## Contents')
+        markdown_lines.append('# Contents')
         
         for heading in headings:
             # Get heading level (h1 -> 1, h2 -> 2, etc.)
