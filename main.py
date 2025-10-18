@@ -51,8 +51,8 @@ async def get_country_outline(country: str = Query(..., description="Country nam
         # Build Markdown outline
         markdown_lines = []
         
-        # Add "Contents" as the first heading
-        markdown_lines.append('# Contents')
+        # Add "Contents" as the first heading (level 2)
+        markdown_lines.append('## Contents')
         
         for heading in headings:
             # Get heading level (h1 -> 1, h2 -> 2, etc.)
@@ -71,9 +71,8 @@ async def get_country_outline(country: str = Query(..., description="Country nam
                 text = ''.join(text_parts).strip()
             
             if text:
-                # Increase all heading levels by 1 (H1->H2, H2->H3, etc.)
-                # This makes room for "Contents" as the only H1
-                markdown_heading = '#' * (level + 1) + ' ' + text
+                # Keep original heading levels
+                markdown_heading = '#' * level + ' ' + text
                 markdown_lines.append(markdown_heading)
         
         # Join all lines with newlines
